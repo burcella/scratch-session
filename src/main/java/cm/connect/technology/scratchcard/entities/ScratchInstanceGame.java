@@ -4,6 +4,8 @@ import cm.connect.technology.scratchcard.enums.StatusGameEnum;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,9 +38,11 @@ public class ScratchInstanceGame {
     private LocalDateTime endDate;
 
     @Column(nullable = false, name = "POOLS_NUMBER")
+    @Positive
     private int numberOfSession;
 
     @Column(nullable = false, name = "TICKET_PRICE")
+    @Positive
     private double ticketPrice;
 
     @Column(nullable = false, name = "CREATED_BY")
@@ -66,7 +70,8 @@ public class ScratchInstanceGame {
     @Column(nullable = true, name = "STATUS")
     @Enumerated(EnumType.STRING)
     private StatusGameEnum status;
-
+    @NotNull
+    @Positive
     private Long totalCard;
 
 }
